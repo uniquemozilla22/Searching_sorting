@@ -24,7 +24,7 @@
 }
 
 
-.App > form > input,.App > form > select{
+.App > form > input,.App > form > select,.App > form > button{
   padding:1rem;
   color:#2b2b2b;
   font-size: 1.3rem;

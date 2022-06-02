@@ -74,6 +74,14 @@ function App() {
               }
             })}
         </select>
+        <button
+          onClick={() => {
+            setData(null);
+            fetchData();
+          }}
+        >
+          Refresh
+        </button>
       </form>
       <div className="data__wrapper">
         {data ? (
