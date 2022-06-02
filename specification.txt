@@ -7,3 +7,16 @@
 
 - YOU CAN GOOGLE SEARCH
 - GITHUB
+
+cell: "0788-972-267"
+dob: {date: '1954-09-28T02:31:50.834Z', age: 68}
+email: "edward.jacobs@example.com"
+gender: "male"
+id: {name: 'NINO', value: 'EY 73 42 31 P'}
+location: {street: {…}, city: 'St Davids', state: 'Avon', country: 'United Kingdom', postcode: 'HC85 4YW', …}
+login: {uuid: '5c5ca343-aacf-4f79-a3f7-90fd12145736', username: 'blackbird431', password: 'w4g8at', salt: 'eBELMqK0', md5: 'acf974d6c0738d306a9d826cbc678702', …}
+name: {title: 'Mr', first: 'Edward', last: 'Jacobs'}
+nat: "GB"
+phone: "015242 11374"
+picture: {large: 'https://randomuser.me/api/portraits/men/71.jpg', medium: 'https://randomuser.me/api/portraits/med/men/71.jpg', thumbnail: 'https://randomuser.me/api/portraits/thumb/men/71.jpg'}
+registered: {date: '2005-01-25T14:28:26.070Z', age: 17}
