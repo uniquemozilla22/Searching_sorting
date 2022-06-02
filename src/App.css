@@ -3,5 +3,40 @@
   flex-wrap: wrap;
   gap:1rem;
   align-items:center;
-  justify-content:space-between
+  justify-content:space-between;
+  margin:1rem;
 }
+.App > form > input{
+  flex:9;
+}
+
+.App > form > select{
+  flex:1;
+}
+
+.App form select{
+  text-transform: capitalize;
+}
+
+
+.App .options{
+  padding:1rem 0.5rem;
+}
+
+
+.App > form > input,.App > form > select{
+  padding:1rem;
+  color:#2b2b2b;
+  font-size: 1.3rem;
+  border-radius: 10px;
+}
+
+.App >form {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:2rem 0;
+  gap:1rem;
+  margin:1rem;
+}
+

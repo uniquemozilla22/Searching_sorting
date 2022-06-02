@@ -6,11 +6,9 @@ function App() {
   const [data, setData] = useState(null);
 
   const [searchParams, setSearchParams] = useState("");
+  const [sortParams, setSortParams] = useState("");
 
   useEffect(() => fetchData(), []);
-  useEffect(() => {
-    if (data) searchParamsFeild(searchParams);
-  }, [searchParams]);
 
   const fetchData = () => {
     fetch("https://randomuser.me/api?results=30")
@@ -33,14 +31,6 @@ function App() {
   };
 
   const searchParamsFeild = (query) => {
-    console.log(
-      data.filter((user) =>
-        Object.values(user).map((value) => {
-          if (typeof value === "object") return false;
-          return value.toLowerCase().includes(query.toLowerCase());
-        })
-      )
-    );
     return data.filter((user) =>
       Object.values(user).some((value) => {
         if (typeof value === "object") return false;
@@ -51,33 +41,17 @@ function App() {
     );
   };
 
-  // const searchingData = (query, data) => {
-  //   console.log(data);
-  //   let updatedData = data;
-  //   if (!query) return data;
-  //   else {
-  //     updatedData = nameFilter(data, query);
-  //     updatedData = emailFilter(data, query);
-  //   }
+  const sortingParamsFeild = (query, datas) => {
+    console.log(
+      datas.sort(function (a, b) {
+        console.log(a[query]);
+        return a[query] > b[query] ? 1 : -1;
+      })
+    );
+    return datas.sort((user1, user2) => user1[query] - user2[query]);
+  };
 
-  //   return updatedData;
-  // };
-
-  // const nameFilter = (data, query) => {
-  //   const name = data.filter((user) =>
-  //     (user.name.last + user.name.first + user.name.title)
-  //       .toLowerCase()
-  //       .includes(query.toLowerCase())
-  //   );
-  //   return [...name];
-  // };
-
-  // const emailFilter = (data, query) => {
-  //   const name = data.filter((user) =>
-  //     user.email.toLowerCase().includes(query.toLowerCase())
-  //   );
-  //   return [...name];
-  // };
+  const explictValue = ["picture"];
 
   return (
     <div className="App">
@@ -86,13 +60,28 @@ function App() {
           type="text"
           className={"input__search"}
           onChange={(e) => setSearchParams(e.target.value)}
+          placeholder={"Search"}
         />
+        <select onChange={(e) => setSortParams(e.target.value)}>
+          <option disabled>{"Sort By"}</option>
+
+          {data &&
+            Object.keys(data[0]).map((keys) => {
+              if (!explictValue.includes(keys)) {
+                return <option value={keys}>{keys}</option>;
+              } else {
+                return null;
+              }
+            })}
+        </select>
       </form>
       <div className="data__wrapper">
         {data ? (
-          searchParamsFeild(searchParams).map((user, index) => (
-            <DataComponent key={index} data={user} sn={index} />
-          ))
+          sortingParamsFeild(sortParams, searchParamsFeild(searchParams)).map(
+            (user, index) => (
+              <DataComponent key={index} data={user} sn={index} />
+            )
+          )
         ) : (
           <h1>Loading..</h1>
         )}
